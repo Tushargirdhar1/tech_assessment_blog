@@ -1,0 +1,30 @@
+{% extends "blogs/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    	<div class="container add_container">
+            <h1>Add Grocery List</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name ='name' class="form-control" placeholder="Name"/>
+                </div>
+                <div class="form-group">
+                    <label>email_field</label>
+                    <input type="text" name="email_field" class="form-control" placeholder="Sender Email"/>
+                </div>
+                <div class="form-group">
+                    <label>To Field</label>
+                    <input type="text" name="to_field" class="form-control" placeholder="Receiver Email"/>
+                </div>
+                <div class="form-group">
+                    <label>Comments</label>
+                    <input type="text" name="comments" class="form-control" placeholder="Comments"/>
+                </div>
+
+                <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> Submit</button>
+            </form>
+        </div>
+      
+{% endblock content %}    
+            

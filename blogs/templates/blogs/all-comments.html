@@ -1,0 +1,17 @@
+{% extends "blogs/base.html" %}
+{% block content %}      
+        {% for comment in comments %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ comment.post }}</a>
+              <p class="article-content">{{ comment.name }}</p>              
+              <small class="text-muted">{{ comment.created_at|date:"F d, Y" }}</small>
+            </div>
+            <p class="article-content">{{ comment.text }}</p>
+          </div>
+          <a class="mr-2" href="{% url 'comment-like' comment.id %}">Like</a>
+        </article>
+    {% endfor %}
+        
+{% endblock content %}

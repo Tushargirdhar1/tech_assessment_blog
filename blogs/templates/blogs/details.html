@@ -1,0 +1,31 @@
+{% extends "blogs/base.html" %}
+{% block content %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+            <a class="article-title" href="{% url 'shared-mail' %}">Share This Post</a>
+            <a class="article-title" href="{% url 'blog_comments' post.id %}">Comment</a>
+          </div>
+        </article>
+
+        {% for comment in comments %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ comment.post }}</a>
+              <p class="article-content">{{ comment.name }}</p>              
+              <small class="text-muted">{{ comment.created_at|date:"F d, Y" }}</small>
+            </div>
+            <p class="article-content">{{ comment.text }}  
+            </div>
+          <a class="mr-2" href="{% url 'comment-like' comment.id %}">Like</a>
+
+        </article>
+      {% endfor %}
+        
+{% endblock content %}
